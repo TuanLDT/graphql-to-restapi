@@ -1,0 +1,37 @@
+{
+  "name": "@lib/graphql-to-restapi",
+  "version": "0.0.7",
+  "description": "",
+  "main": "./dist/index.js",
+  "scripts": {
+    "example": "babel-node example",
+    "build": "babel ./src --out-dir ./dist"
+  },
+  "author": "TuanLDT",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.1.2",
+    "@babel/core": "^7.1.2",
+    "@babel/node": "^7.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.7.0",
+    "eslint-plugin-babel": "^5.2.1",
+    "express": "^4.16.4",
+    "graphql": "^14.0.2",
+    "graphql-custom-types": "^1.5.0",
+    "graphql-type-json": "^0.2.1"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "common-tags": "^1.8.0",
+    "ejs": "^2.6.1",
+    "express-graphql": "^0.6.12",
+    "immutable": "^3.8.2",
+    "swagger-ui-express": "^4.0.1"
+  },
+  "peerDependencies": {
+    "graphql": "^14.0.2"
+  }
+}
