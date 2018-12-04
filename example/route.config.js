@@ -42,6 +42,17 @@ let routeConfigs = [
             }
         ],
         tags: ['Viewer'] 
+    },
+
+    // Account
+    {
+        method: 'post',
+        path: '/accounts',
+        handle: {
+            type: 'mutation',
+            name: 'createMultiAccount'
+        },
+        tags: ['Account'] 
     }
 ];
 

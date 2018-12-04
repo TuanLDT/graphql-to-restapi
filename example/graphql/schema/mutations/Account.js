@@ -1,7 +1,8 @@
 import {
     GraphQLNonNull,
     GraphQLString,
-    GraphQLBoolean
+    GraphQLBoolean,
+    GraphQLList
 } from 'graphql';
 
 import { AccountType } from '../../types';
@@ -36,6 +37,19 @@ export const resetPassword = {
     args: {
         email: {
             type: new GraphQLNonNull(GraphQLEmail)
+        }
+    },
+    resolve(root, params, {req}) {
+        return true
+    }
+};
+
+export const createMultiAccount = {
+    type: GraphQLBoolean,
+    description: 'Create multi account',
+    args: {
+        accounts: {
+            type: new GraphQLList(GraphQLString)
         }
     },
     resolve(root, params, {req}) {

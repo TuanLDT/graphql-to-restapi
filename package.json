@@ -1,11 +1,12 @@
 {
   "name": "@lib/graphql-to-restapi",
-  "version": "0.0.7",
+  "version": "0.0.12",
   "description": "",
   "main": "./dist/index.js",
   "scripts": {
     "example": "babel-node example",
-    "build": "babel ./src --out-dir ./dist"
+    "build": "babel --copy-files ./src --out-dir ./dist",
+    "push": "bash ./scripts/publish.sh"
   },
   "author": "TuanLDT",
   "license": "ISC",

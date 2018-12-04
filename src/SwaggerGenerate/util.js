@@ -24,7 +24,7 @@ const formatType = (type) =>{
         data.type = name;
 
         if (data.type === 'Email') {
-            data.type = 'String';
+            data.type = 'string';
         }
 
         if (data.type === 'Float' || data.type === 'Int') {
@@ -35,7 +35,17 @@ const formatType = (type) =>{
             data.type = 'object';
         }
 
+        if (data.type === 'ObjectID') {
+            data.type = 'string';
+        }
+
         data.type = data.type.toLowerCase();
+    }
+
+    if (kind === 'LIST') {
+        data.type = 'array';
+        data.items = formatType(ofType);
+        return data;
     }
 
     if (ofType) {
@@ -54,9 +64,14 @@ const formatProperties = (args) => {
     args.map(function (param) {
         let {name, description, type} = param;
 
+        let typeFormat = formatType(type);
         properties = properties.set(name, new Map({}));
-        properties = properties.setIn([name, 'type'], formatType(type).type);
+        properties = properties.setIn([name, 'type'], typeFormat.type);
         properties = properties.setIn([name, 'description'], description);
+
+        if (typeFormat.items) {
+            properties = properties.setIn([name, 'items'], typeFormat.items);
+        }
     });
 
     return properties;

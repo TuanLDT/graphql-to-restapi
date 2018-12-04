@@ -21,6 +21,10 @@ class RouteHandleDefine {
 
     async init() {
         let schemaJson = await (graphql(this.schema, introspectionQuery));
+        if (schemaJson.errors) {
+            throw schemaJson.errors[0];
+        }
+        
         let schema =  schemaJson.data.__schema;
         this.fragment_ = await (fragmentDefine(this.schema));
         this.doc = swaggerGenerate({...this.options_, schema, fragment: this.fragment_});
@@ -139,9 +143,7 @@ class RouteHandleDefine {
                 
                 return;
             }
-
-            let raw_data = JSON.stringify(data.response).replace(/null/gi, '""'); 
-            resolve(JSON.parse(raw_data));
+            resolve(data.response);
         });
     }
 
