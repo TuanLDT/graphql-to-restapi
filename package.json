@@ -1,12 +1,14 @@
 {
   "name": "@lib/graphql-to-restapi",
-  "version": "0.0.13",
+  "version": "0.0.15",
   "description": "",
   "main": "./dist/index.js",
   "scripts": {
     "example": "babel-node example",
     "build": "babel --copy-files ./src --out-dir ./dist",
-    "push": "bash ./scripts/publish.sh"
+    "set-scope": "bash ./scripts/publish.sh",
+    "release-it": "release-it patch -n",
+    "release": "npm-run-all --serial build set-scope release-it"
   },
   "author": "TuanLDT",
   "license": "ISC",
@@ -15,6 +17,7 @@
     "@babel/core": "^7.1.2",
     "@babel/node": "^7.0.0",
     "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/plugin-transform-async-to-generator": "^7.2.0",
     "@babel/plugin-transform-runtime": "^7.2.0",
     "@babel/preset-env": "^7.1.0",
     "babel-eslint": "^10.0.1",
@@ -23,7 +26,9 @@
     "express": "^4.16.4",
     "graphql": "^14.0.2",
     "graphql-custom-types": "^1.5.0",
-    "graphql-type-json": "^0.2.1"
+    "graphql-type-json": "^0.2.1",
+    "npm-run-all": "^4.1.5",
+    "release-it": "^9.4.3"
   },
   "dependencies": {
     "@babel/runtime": "^7.2.0",

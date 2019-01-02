@@ -17,7 +17,8 @@ const plugins = [
     "helpers": true,
     "regenerator": true,
     "useESModules": false
-  }]
+  }],
+  '@babel/plugin-transform-async-to-generator'
 ];
 
 module.exports = { presets, plugins };

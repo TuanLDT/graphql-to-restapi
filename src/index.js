@@ -4,12 +4,12 @@ import swaggerUi from 'swagger-ui-express';
 import routeHandleDefine from './RouteHandleDefine';
 import expressGraphql from './graphql';
 
-const router = express.Router();
-
 export default function(options) {
 	if (!options) {
 	    throw new Error('GraphQL RestAPI middleware requires options.');
 	}
+
+	const router = express.Router();
 	let {schema, routeConfigs, graphql, swagger, formatContext} = options;
 
 	router.use(bodyParser.urlencoded({
