@@ -33,7 +33,7 @@ export default function(options) {
 		}
 
 		if (swagger) {
-			router.use('/doc', swaggerUi.serve, swaggerUi.setup(query.doc));
+			router.use('/doc', swaggerUi.serveFiles(query.doc), swaggerUi.setup(query.doc));
 		}
 
 
