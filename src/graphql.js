@@ -2,9 +2,10 @@ import express from 'express';
 import graphqlHTTP from 'express-graphql';
 import path from 'path';
 import ejs from 'ejs';
-const router = express.Router();
 
 export default function(schema) {
+    const router = express.Router();
+    
     if (process.env.NODE_ENV !== 'production') {
 
         router.use('/query', function(req, res) {
