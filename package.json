@@ -1,14 +1,13 @@
 {
-  "name": "@lib/graphql-to-restapi",
+  "name": "graphql-to-restapi",
   "version": "0.0.17",
   "description": "",
   "main": "./dist/index.js",
   "scripts": {
     "example": "babel-node example",
     "build": "babel --copy-files ./src --out-dir ./dist",
-    "set-scope": "bash ./scripts/publish.sh",
     "release-it": "release-it patch -n",
-    "release": "npm-run-all --serial build set-scope release-it"
+    "release": "npm-run-all --serial build release-it"
   },
   "author": "TuanLDT",
   "license": "ISC",

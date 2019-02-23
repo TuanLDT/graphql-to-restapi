@@ -1,14 +1,8 @@
 
 
-## Thiết lập npm scope để cài module
-```bash
-$ npm config set '//npmjs.vietid.net/:_authToken=VC2MSWAd9OoPbtYlZrGWBGyELENW9x51TzitoyBnrS8='
-$ npm config set @lib:registry https://npmjs.vietid.net/
-```
-
 ## Cài module:
 ```bash
-$ npm install --save @lib/graphql-to-restapi
+$ npm install --save graphql-to-restapi
 ```
 
 ## Sử dụng
@@ -16,7 +10,7 @@ $ npm install --save @lib/graphql-to-restapi
 Chỉ cần sử dụng `graphql-to-restapi` như một route handle
 
 ```js
-import GraphqlRest from '@lib/graphql-to-restapi';
+import GraphqlRest from 'graphql-to-restapi';
 import express from 'express';
 const app = express();
 
