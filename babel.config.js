@@ -18,7 +18,8 @@ const plugins = [
     "regenerator": true,
     "useESModules": false
   }],
-  '@babel/plugin-transform-async-to-generator'
+  '@babel/plugin-transform-async-to-generator',
+  '@babel/plugin-proposal-object-rest-spread'
 ];
 
 module.exports = { presets, plugins };
