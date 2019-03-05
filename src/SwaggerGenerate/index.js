@@ -124,7 +124,10 @@ class SwaggerGenerate {
             });
         }
 
-        doc.parameters = [...parameters, ...parametersInPath, ...doc.parameters];
+        doc.parameters = [...parametersInPath, ...parameters, ...doc.parameters];
+        doc.parameters = _.uniqBy(doc.parameters, 'name');
+
+
         this.doc = this.doc.setIn(['paths', path, method], {tags,...doc});
     }
 
