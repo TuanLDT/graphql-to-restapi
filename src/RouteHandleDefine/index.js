@@ -203,7 +203,7 @@ class RouteHandleDefine {
                     params[name] = params[name] === false || params[name] === 'false' ||  params[name] === 0 || params[name] === '0' ? false : true;
                 }
 
-                if ((type.name === 'Int' && type.kind === 'SCALAR')) {
+                if ((type.name === 'Int' && type.kind === 'SCALAR') || (type.kind === 'NON_NULL' && type.ofType.name === 'Int')) {
                     params[name] = parseInt(params[name]);
                 }
 
