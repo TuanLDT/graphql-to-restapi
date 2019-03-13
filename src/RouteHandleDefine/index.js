@@ -86,7 +86,7 @@ class RouteHandleDefine {
         let self = this;
         let response = this._formatResponse(type);
         let fragment = this._formatFragment(type);
-        this.query[name] = function (req, res, fields, formatContext) {
+        this.query[name] = function (req, res, fields, formatContext, formatResponse) {
             let {query, params, body} = req;
             let params_ = {...body, ...params, ...query};
             fields = query.fields ? `{${query.fields}}` : fields;
@@ -99,7 +99,7 @@ class RouteHandleDefine {
                 .then(result => {
                     return self._formatResult(result);
                 }).then((data = {}) => {
-                    let resData = {
+                    let resData = typeof formatResponse === 'function' ? formatResponse(null, data) : {
                         code: 200,
                         message: 'SUCCESS',
                         data
@@ -107,14 +107,20 @@ class RouteHandleDefine {
 
                     res.set('Content-Type', 'application/json').send(JSON.stringify(resData, null, 2));
                 }).catch(err => {
-                    let result = {
-                        code: 400,
-                        message: err.message
-                    };
+                    let result;
 
-                    if (!/production/.test(process.env.NODE_ENV)) {
-                        result.stack = err.stack;
-                    }
+                    if (typeof formatResponse === 'function') {
+                        result = formatResponse(err)
+                    } else {
+                        result = {
+                            code: 400,
+                            message: err.message
+                        }
+
+                        if (!/production/.test(process.env.NODE_ENV)) {
+                            result.stack = err.stack;
+                        }
+                    };
 
                     res.status(400).set('Content-Type', 'application/json').send(JSON.stringify(result, null, 2));
                 });

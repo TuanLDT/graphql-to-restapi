@@ -10,7 +10,7 @@ export default function(options) {
 	}
 
 	const router = express.Router();
-	let {schema, routeConfigs, graphql, swagger, formatContext} = options;
+	let {schema, routeConfigs, graphql, swagger, formatContext, formatResponse} = options;
 
 	router.use(bodyParser.urlencoded({
 	    extended: true
@@ -24,7 +24,7 @@ export default function(options) {
 		    let {method, path, handle, fields} = routeConfig;
 		    let {type, name} = handle;
 		    router[method](path, function(req, res) {
-		        query[type][name](req, res, fields, formatContext);
+		        query[type][name](req, res, fields, formatContext, formatResponse);
 		    });
 		}
 

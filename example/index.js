@@ -15,6 +15,18 @@ app.use('/api', GraphqlRest({
 		return {
 			account: 3
 		}
+	},
+	formatResponse: function(err, data) {
+		if (err) {
+			return {
+				error: true
+			}
+		}
+
+		return {
+			error: false,
+			data
+		}
 	}
 }));
 
