@@ -24,7 +24,7 @@ export default function(options) {
 		    let {method, path, handle, fields} = routeConfig;
 		    let {type, name} = handle;
 		    router[method](path, function(req, res) {
-		        query[type][name](req, res, fields, formatContext, formatResponse);
+		        query[type][name](req, res, fields, routeConfig, formatContext, formatResponse);
 		    });
 		}
 

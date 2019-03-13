@@ -17,6 +17,7 @@ let routeConfigs = [
             type: 'query',
             name: 'profile'
         },
+        wapper: 'test',
         parameters: [
             {
                 in: 'header',

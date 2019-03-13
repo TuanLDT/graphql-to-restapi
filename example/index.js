@@ -16,10 +16,19 @@ app.use('/api', GraphqlRest({
 			account: 3
 		}
 	},
-	formatResponse: function(err, data) {
+	formatResponse: function(err, data, routeConfig) {
 		if (err) {
 			return {
 				error: true
+			}
+		}
+
+		if (routeConfig.wapper) {
+			return {
+				[routeConfig.wapper]: {
+					error: false,
+					data
+				}
 			}
 		}
 
