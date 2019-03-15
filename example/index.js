@@ -12,6 +12,7 @@ app.use('/api', GraphqlRest({
 	}, 
 	graphql: true,
 	formatContext: function(req) {
+		// Gắn context vào trong graphql
 		return {
 			account: 3
 		}
