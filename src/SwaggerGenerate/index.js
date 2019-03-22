@@ -29,6 +29,18 @@ class SwaggerGenerate {
         this.fragment_ = fragment;
         this.mutation = {};
         this.query = {};
+        routeConfigs = _.sortBy(routeConfigs, [
+            function(route) { 
+                route.tags = route.tags || [];
+                return route.tags[0]; 
+            },
+            function(route) { 
+                return route.method; 
+            },
+            function(route) { 
+                return route.path; 
+            }
+        ]);
         this.routes = routeConfigs;
 
         this.defineMutation = this.defineMutation.bind(this);
